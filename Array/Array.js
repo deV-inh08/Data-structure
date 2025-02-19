@@ -61,6 +61,27 @@ class MyArray {
         }
         return undefined
     }
+
+    // Insert an element in the first position
+    insertFirstElement(number) {
+        for(let i = this.length; i >=0; i--) {
+            this.data[i] = this.data[i - 1]
+        }
+        this.data[0] = number
+        this.length++
+        return this.data
+    }
+
+    // Remove an element in the first position
+    shift() {
+        for(let i = 0; i < this.length; i++) {
+            this.data[i] = this.data[i + 1]
+        }
+        this.pop()
+        return this.data
+    }
+
+
 }
 const array = new MyArray()
 // push item
@@ -74,4 +95,13 @@ array.push(4)
 console.log(array.findIndex(3)) // index: 2
 console.log(array.find(0)) // item: 1
 
+array.insertFirstElement(0)
+array.insertFirstElement(-1)
+
+array.shift()
 console.log(array)
+
+
+const arr = [1, 2, 3, 4]
+console.log(arr.splice(0, 1))
+console.log(arr)
