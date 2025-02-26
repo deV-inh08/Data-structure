@@ -81,6 +81,19 @@ class MyArray {
         return this.data
     }
 
+    // insert an element with position
+    insert(item, index) {
+        let temp = this.data[index]
+        this.data[index] = item
+        for(let i = index + 1; i < this.length; i++) {
+            let current = this.data[i]
+            this.data[i] = temp
+            temp = current
+        }
+        this.data[this.length] = temp
+        this.length++
+        return this.data
+    }
 
 }
 const array = new MyArray()
@@ -92,16 +105,15 @@ array.push(4)
 
 // array.delete(2)
 
-console.log(array.findIndex(3)) // index: 2
-console.log(array.find(0)) // item: 1
+// console.log(array.findIndex(3)) // index: 2
+// console.log(array.find(0)) // item: 1
 
 array.insertFirstElement(0)
 array.insertFirstElement(-1)
 
 array.shift()
+// console.log(array)
+
+
+array.insert(6, 2)
 console.log(array)
-
-
-const arr = [1, 2, 3, 4]
-console.log(arr.splice(0, 1))
-console.log(arr)
